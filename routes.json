@@ -1,0 +1,21 @@
+{
+  "/auth/login": "/login",
+  "/auth/check-registration": "/registration",
+  "/auth/create-account": "/users",
+  "/cre/list": "/cre",
+  "/cre/:id/list-schools": "/schools?cre_id=:id",
+  "/school/:id/list-classes": "/classes?pivot.school_id=:id",
+  "/discipline/list": "/disciplines",
+  "/discipline/:id/active-volumes": "/schools?cre_id=:id",
+  "/discipline/:id/videoaulas": "/schools?cre_id=:id",
+  "/video/:id": "/videos?id=:id",
+  "/video/:id/comments": "/videos-comments?videos_id=:id",
+  "/essay/list": "/essays",
+  "/essay/state/:id/list-essays": "/essay-state-list-essays?state_essays_id=:id",
+  "/essay/:id": "/essays/:id",
+  "/essay/send/:id": "/essay-send/:id",
+  "/tests-states/list": "/tests-states",
+  "/tests-states/:id/send": "/schools?cre_id=:id",
+  "/question/:id/answer": "/schools?cre_id=:id",
+  "/tests-states/:id/questions": "/schools?cre_id=:id"
+}

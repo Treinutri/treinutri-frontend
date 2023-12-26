@@ -1,0 +1,14 @@
+@import url('./_overrides.scss');
+@import url('./_theme.scss');
+@import url('./_utils.scss');
+
+body,
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  @media (max-width: 400px) {
+    font-size: 0.9rem !important;
+  }
+}

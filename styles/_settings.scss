@@ -1,0 +1,6 @@
+@use 'vuetify/settings' with (
+  $text-field-affix-color: red,
+  $text-field-border-radius: 10px,
+  $text-field-input-padding-start: 50px,
+  $text-field-details-padding-inline: 50px
+);
