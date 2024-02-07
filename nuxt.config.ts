@@ -2,6 +2,7 @@ import { NuxtPage } from 'nuxt/schema'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
+  srcDir: 'src',
   devtools: {
     enabled: true,
 
@@ -55,6 +56,10 @@ export default defineNuxtConfig({
 
   build: {
     transpile: ['vuetify'],
+  },
+
+  alias: {
+    '@/*': './src/*',
   },
 
   components: [
