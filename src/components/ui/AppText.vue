@@ -91,6 +91,15 @@ const customSizeClass = computed(() => {
     case '4xl':
       classStr = 'app-font-size-4xl'
       break
+    case '5xl':
+      classStr = 'app-font-size-5xl'
+      break
+    case '6xl':
+      classStr = 'app-font-size-6xl'
+      break
+    case '7xl':
+      classStr = 'app-font-size-7xl'
+      break
   }
 
   return classStr

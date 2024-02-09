@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col md="6" class="pt-4 pb-0">
-        <label for="nome">
+        <label for="name">
           <app-text size="sm" color="subtitle" as="span" weight="regular">
             Digite seu nome completo
             <span class="text-red-500">*</span>
@@ -10,11 +10,11 @@
         </label>
 
         <v-text-field
-          id="nome"
-          v-model="inputs.nome.value"
+          id="name"
+          v-model="inputs.name.value"
           class="mt-3"
-          placeholder="Nome"
-          :error-messages="inputs.nome.errors"
+          placeholder="name"
+          :error-messages="inputs.name.errors"
         >
           <template #prepend-inner>
             <ph-user class="me-3" :color="gray500" size="20" />
@@ -124,7 +124,7 @@ const { user } = useUserStore()
 
 const isModalOpen = ref<boolean>(false)
 const inputs = reactive({
-  nome: { errors: [] as string[], value: user?.nome },
+  name: { errors: [] as string[], value: user?.name },
 
   email: { errors: [] as string[], value: user?.email },
 
@@ -132,14 +132,14 @@ const inputs = reactive({
 })
 
 const isButtonDisabled = computed(() => {
-  if (!inputs.nome.value && !inputs.email.value && !inputs.phone.value) {
+  if (!inputs.name.value && !inputs.email.value && !inputs.phone.value) {
     return true
   }
   return false
 })
 
 function handleDiscardChanges() {
-  inputs.nome.value = user.nome
+  inputs.name.value = user.name
   inputs.email.value = user.email
   inputs.phone.value = user.telefone
 }

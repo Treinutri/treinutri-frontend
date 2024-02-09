@@ -54,7 +54,7 @@
 //solo
 .v-field.v-field--variant-solo {
   box-shadow: none !important;
-  color: rgb(var(--v-theme-text-800)) !important;
+  color: rgb(var(--v-theme-text-900)) !important;
 
   border: 1px solid rgb(var(--v-theme-gray-100));
   border-radius: 8px !important;
@@ -63,7 +63,7 @@
 .v-field__field.v-field.v-field--variant-solo input,
 .v-field__field.v-field--variant-outlined input,
 .v-text-field .v-field--no-label input {
-  color: rgb(var(--v-theme-text-800)) !important;
+  color: rgb(var(--v-theme-text-900)) !important;
 
   border-radius: 8px !important;
 }

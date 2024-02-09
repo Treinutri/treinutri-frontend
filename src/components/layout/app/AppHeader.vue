@@ -12,7 +12,7 @@
           <ph-x size="28" />
         </li>
 
-        <li>Inicio</li>
+        <li @click="$router.push({ path: '/app/home' })">Inicio</li>
 
         <v-menu open-on-hover elevation="0">
           <template #activator="{ props }">
@@ -23,13 +23,13 @@
           </template>
 
           <v-list elevation="0">
-            <v-list-item to="/">
+            <v-list-item to="/app/dicas/treino">
               <app-text as="strong" color="text-900" size="sm">Treino</app-text>
             </v-list-item>
-            <v-list-item to="/">
+            <v-list-item to="/app/dicas/nutricao">
               <app-text as="strong" color="text-900" size="sm">Nutrição</app-text>
             </v-list-item>
-            <v-list-item to="/">
+            <v-list-item to="/app/dicas/receitas">
               <app-text as="strong" color="text-900" size="sm">Receitas</app-text>
             </v-list-item>
           </v-list>
@@ -44,14 +44,11 @@
           </template>
 
           <v-list elevation="0">
-            <v-list-item to="/">
+            <v-list-item to="/app/avaliacao/imc">
               <app-text as="strong" color="text-900" size="sm">Avaliação de imc</app-text>
             </v-list-item>
-            <v-list-item to="/">
+            <v-list-item to="/app/avaliacao/fitness">
               <app-text as="strong" color="text-900" size="sm">Avaliação Fitness</app-text>
-            </v-list-item>
-            <v-list-item to="/">
-              <app-text as="strong" color="text-900" size="sm">Receitas</app-text>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -69,7 +66,9 @@
         @click="isMenuMobileOpen = !isMenuMobileOpen"
       />
       <div class="d-flex gap-5 header__login-btn">
-        <app-button class="px-8" @click="$router.push({ path: '/auth/login' })">Login</app-button>
+        <app-button rounded="xl" class="px-8" @click="$router.push({ path: '/auth/login' })">
+          Login
+        </app-button>
       </div>
     </nav>
     <div v-if="isMenuMobileOpen" class="header__menu-backdrop"></div>

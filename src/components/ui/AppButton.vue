@@ -12,7 +12,7 @@ interface IProps {
   outlined?: boolean
   full?: boolean
   isFab?: boolean
-  rounded?: boolean
+  rounded?: boolean | 'xl' | 'lg' | 'md' | 'sm'
   borderColor?: ColorTypes
   color?: ColorTypes
   background?: ColorTypes
@@ -77,6 +77,22 @@ const styleClasses = computed(() => {
 
   if (props.rounded !== undefined && props.rounded) {
     stringClass += 'button--rounded '
+  }
+
+  if (props.rounded !== undefined && props.rounded === 'lg') {
+    stringClass += 'button--rounded-lg '
+  }
+
+  if (props.rounded !== undefined && props.rounded === 'sm') {
+    stringClass += 'button--rounded-sm '
+  }
+
+  if (props.rounded !== undefined && props.rounded === 'md') {
+    stringClass += 'button--rounded-md '
+  }
+
+  if (props.rounded !== undefined && props.rounded === 'xl') {
+    stringClass += 'button--rounded-xl '
   }
 
   if (props.width !== undefined && props.width) {
@@ -180,6 +196,22 @@ const computedHeightUnit = computed(() => {
 
   &--rounded {
     border-radius: 50% !important;
+  }
+
+  &--rounded-sm {
+    border-radius: 20px !important;
+  }
+
+  &--rounded-md {
+    border-radius: 30px !important;
+  }
+
+  &--rounded-lg {
+    border-radius: 40px !important;
+  }
+
+  &--rounded-xl {
+    border-radius: 50px !important;
   }
 
   &--width {

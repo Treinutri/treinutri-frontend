@@ -18,6 +18,9 @@ export const vuetifyFontSizesVariables = {
   'theme-font-size-2xl': themeInUse.fontSizes['2xl'],
   'theme-font-size-3xl': themeInUse.fontSizes['3xl'],
   'theme-font-size-4xl': themeInUse.fontSizes['4xl'],
+  'theme-font-size-5xl': themeInUse.fontSizes['5xl'],
+  'theme-font-size-6xl': themeInUse.fontSizes['6xl'],
+  'theme-font-size-7xl': themeInUse.fontSizes['7xl'],
 } as const
 
 export const vuetifyFontWeightVariables = {
