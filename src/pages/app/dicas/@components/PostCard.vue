@@ -9,7 +9,10 @@
     </div>
     <div class="d-flex gap-20 post__body">
       <div class="d-flex justify-center flex-column gap-5">
-        <app-text as="strong" size="6xl" class="post__title">
+        <app-text v-if="tag" as="strong" size="sm" class="post__tag">
+          <span>{{ tag }}</span>
+        </app-text>
+        <app-text as="strong" size="2xl" class="post__title">
           {{ title }}
         </app-text>
 
@@ -65,8 +68,51 @@ defineProps<IProps>()
   overflow-wrap: break-word;
   word-break: break-word;
 
+  &__tag {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: rgb(var(--v-theme-blue-400));
+
+    span {
+      position: relative;
+
+      &::before {
+        content: '';
+
+        transition: 0.4s;
+
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        height: 1px;
+
+        width: 0%;
+
+        background: rgb(var(--v-theme-blue-400));
+      }
+
+      &:hover {
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+
+    &::before {
+      content: '';
+      width: 15px;
+      height: 2px;
+      background-color: rgb(var(--v-theme-blue-400));
+    }
+  }
+
   &__title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
   &__title:hover {
     color: rgb(var(--v-theme-blue-600));

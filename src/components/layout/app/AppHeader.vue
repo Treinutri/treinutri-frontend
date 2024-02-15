@@ -53,11 +53,27 @@
           </v-list>
         </v-menu>
 
-        <li>Fale com a Trey- IA</li>
+        <li @click="$router.push({ path: '/app/ia' })">Fale com a Trey- IA</li>
 
-        <li @click="$router.push({ path: '/auth/register/steps' })">
-          <app-text as="span" color="blue-600" weight="semibold">Cadastre-se</app-text>
-        </li>
+        <v-menu open-on-hover elevation="0">
+          <template #activator="{ props }">
+            <div class="d-flex align-center header__item" v-bind="props">
+              <li>
+                <app-text as="span" weight="semibold">Cadastre-se</app-text>
+              </li>
+              <ph-caret-down :color="blue600" weight="bold" class="ms-2" />
+            </div>
+          </template>
+
+          <v-list elevation="0">
+            <v-list-item to="/auth/register/steps?tipo=aluno">
+              <app-text as="strong" color="text-900" size="sm">Sou aluno</app-text>
+            </v-list-item>
+            <v-list-item to="/auth/register/steps?tipo=coach">
+              <app-text as="strong" color="text-900" size="sm">Sou coach</app-text>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </ul>
 
       <ph-list

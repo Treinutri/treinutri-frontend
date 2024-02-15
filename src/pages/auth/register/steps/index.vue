@@ -260,6 +260,7 @@ useSeoMeta({
 })
 
 const router = useRouter()
+const route = useRoute()
 
 const theme = useTheme()
 
@@ -291,7 +292,7 @@ const inputs = reactive({
   phone: { errors: [] as string[], value: '' },
   type: {
     errors: [] as string[],
-    value: 'coach',
+    value: route.query.tipo,
   },
 })
 

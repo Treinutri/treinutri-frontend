@@ -19,8 +19,19 @@
         </app-text>
 
         <div class="d-flex gap-10">
-          <app-button class="px-10" background="green-500">Aluno</app-button>
-          <app-button class="px-10">Coach</app-button>
+          <app-button
+            class="px-10"
+            background="green-500"
+            @click="$router.push({ path: '/auth/register/steps?tipo=aluno' })"
+          >
+            Aluno
+          </app-button>
+          <app-button
+            class="px-10"
+            @click="$router.push({ path: '/auth/register/steps?tipo=coach' })"
+          >
+            Coach
+          </app-button>
         </div>
       </div>
     </div>

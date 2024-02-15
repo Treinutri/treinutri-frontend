@@ -15,6 +15,7 @@
           culinária. A prote..."
           title="Post"
           date="11-10-2023"
+          tag="Treino"
         />
 
         <v-pagination class="my-15" :length="12"></v-pagination>
