@@ -79,7 +79,7 @@
 </template>
 
 <script setup lang="ts">
-import { PhHouse, PhCompass, PhArrowLineLeft } from '@phosphor-icons/vue'
+import { PhHouse, PhCompass, PhArrowLineLeft, PhChartDonut } from '@phosphor-icons/vue'
 import { useTheme } from 'vuetify'
 import AppText from '@/components/ui/AppText.vue'
 
@@ -136,6 +136,12 @@ const items: IRouterGroupItems[] = [
     type: 'group',
     text: 'Funcionalidades',
     group: [
+      {
+        text: 'Dashboard',
+        icon: PhChartDonut,
+        url: '/aluno/dashboard',
+        slug: 'dashboard',
+      },
       {
         text: 'Sair',
         icon: PhArrowLineLeft,
@@ -197,6 +203,8 @@ ul {
   }
 
   &__item {
+    display: flex;
+    align-items: center;
     min-height: 50px;
     padding: 10px 29px 10px 29px;
   }

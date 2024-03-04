@@ -37,6 +37,7 @@
 
 <script setup lang="ts">
 import TreyImg from '@/assets/trey.png'
+
 definePageMeta({
   layout: 'app-view-layout',
 })
