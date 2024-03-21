@@ -47,30 +47,31 @@
       <ul v-for="(item, i) in subgroup.group" :key="'subgroup-item' + i">
         <li
           :class="{
-            'sidebar__active-item': linkActive === item.slug,
+            'sidebar__active-item':
+              linkActive === item.slug || $route.meta.activeParentNavLink === item.slug,
           }"
           class="sidebar__item cursor-pointer"
-          @click="() => navigateToLink(item)"
+          @click.stop="navigateToLink(item)"
         >
-          <div class="d-flex align-center" :class="{ 'justify-center': !isExpanded }">
-            <component
-              :is="item.icon"
-              size="25"
-              weight="light"
-              :color="linkActive === item.slug ? primaryColor : gray500Color"
-            />
+          <list-item
+            v-if="!item.subgroup?.length"
+            :link-active="linkActive || ''"
+            :is-expanded="isExpanded"
+            :item="item"
+            @click="$router.push(item?.url || '')"
+          />
 
-            <app-text
-              v-if="isExpanded"
-              class="ms-4 d-inline-block sidebar__text"
-              as="span"
-              size="md"
-              :color="linkActive === item.slug ? 'primary' : 'subtitle'"
-              weight="medium"
-            >
-              {{ item.text }}
-            </app-text>
-          </div>
+          <list-subgroup-item
+            v-else
+            :is-expanded="isExpanded"
+            :item="{
+              icon: item.icon,
+              text: item.text,
+              slug: item.slug,
+              url: item.url || '',
+              subgroup: item.subgroup || [],
+            }"
+          />
         </li>
       </ul>
     </div>
@@ -79,14 +80,24 @@
 </template>
 
 <script setup lang="ts">
-import { PhHouse, PhCompass, PhArrowLineLeft, PhChartDonut } from '@phosphor-icons/vue'
-import { useTheme } from 'vuetify'
+import {
+  PhHouse,
+  PhCompass,
+  PhArrowLineLeft,
+  PhChartDonut,
+  PhPhone,
+  PhBarbell,
+  PhOrangeSlice,
+  PhPill,
+  PhFirstAidKit,
+  PhClipboard,
+} from '@phosphor-icons/vue'
+import ListSubgroupItem from './ListSubgroupItem.vue'
+import ListItem from './ListItem.vue'
+import { IItem } from './@types'
 import AppText from '@/components/ui/AppText.vue'
-
 import LogoImage from '@/assets/logo.png'
-
 // import { useUserStore } from "@/stores/userStore";
-import { SlugRouterTypes } from '@/types/student'
 
 const isModalLogoutOpen = ref<boolean>(false)
 
@@ -96,22 +107,12 @@ interface IProps {
 
 defineProps<IProps>()
 
-const theme = useTheme()
-const primaryColor = theme.current.value.colors.primary
-const gray500Color = theme.current.value.colors['text-500']
-
 const route = useRoute()
 
-interface IRouterItem {
-  text: string
-  icon: any
-  url: string
-  slug: SlugRouterTypes
-}
 interface IRouterGroupItems {
   type: 'normal' | 'group'
   text?: string
-  group?: IRouterItem[]
+  group?: IItem[]
 }
 
 const items: IRouterGroupItems[] = [
@@ -127,20 +128,65 @@ const items: IRouterGroupItems[] = [
       {
         text: 'Ia',
         icon: PhCompass,
-        url: '/aluno/home',
+        url: '/app/ia',
         slug: 'ia',
       },
     ],
   },
+
   {
     type: 'group',
     text: 'Funcionalidades',
     group: [
       {
+        text: 'Meus Planos',
+        icon: PhClipboard,
+        subgroup: [
+          {
+            text: 'Treino',
+            icon: PhBarbell,
+            url: '/aluno/treino',
+            slug: 'treino',
+          },
+          {
+            text: 'Nutrição',
+            icon: PhOrangeSlice,
+            url: '/aluno/nutricao',
+            slug: 'nutricao',
+          },
+          {
+            text: 'Suplementação',
+            icon: PhFirstAidKit,
+            url: '/aluno/suplementacao',
+            slug: 'suplementacao',
+          },
+          {
+            text: 'Ergogenicos',
+            icon: PhPill,
+            url: '/aluno/ergogenicos',
+            slug: 'ergogenicos',
+          },
+        ],
+        slug: 'meus_planos',
+      },
+      {
         text: 'Dashboard',
         icon: PhChartDonut,
         url: '/aluno/dashboard',
         slug: 'dashboard',
+      },
+    ],
+  },
+
+  {
+    type: 'group',
+    text: 'Outros',
+    group: [
+      {
+        text: 'Contato',
+        icon: PhPhone,
+        url: '/app/contato',
+        slug: 'contato',
       },
       {
         text: 'Sair',
@@ -155,11 +201,15 @@ const items: IRouterGroupItems[] = [
 const linkActive = computed(() => {
   return route.meta.activeNavLink
 })
+const activeNavParentLink = computed(() => {
+  return route.meta.activeParentNavLink
+})
 
-async function navigateToLink(item: IRouterItem) {
-  if (item.slug !== 'sair') {
-    await navigateTo(item.url)
-  } else {
+provide('linkActive', linkActive)
+provide('activeParentNavLink', activeNavParentLink)
+
+function navigateToLink(item: IItem) {
+  if (item.slug === 'sair') {
     isModalLogoutOpen.value = true
   }
 }
