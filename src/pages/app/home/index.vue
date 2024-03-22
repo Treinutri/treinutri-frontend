@@ -2,11 +2,11 @@
   <div>
     <div class="typed-text">
       <client-only>
-        <typed :options="options" class="d-flex align-center gap-5">
+        <typed :options="options" class="d-flex align-center gap-5 mb-6 mb-md-2">
           <app-text as="h1" class="typing" size="5xl"></app-text>
         </typed>
       </client-only>
-      <app-text as="p" color="text-600" weight="medium" size="lg" class="mt-4">
+      <app-text as="p" color="text-600" weight="medium" size="lg" class="mt-10">
         Linkamos Alunos e Coach's em uma única plataforma.
       </app-text>
       <app-text as="p" color="text-600" weight="medium" size="lg">
