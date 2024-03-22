@@ -6,6 +6,7 @@ on:
 jobs:
   web-deploy:
     name: Deploy
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - name: Get the latest code
@@ -13,16 +14,12 @@ jobs:
       - uses: actions/setup-node@master
       # - name: Copy .env
       #   run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: Installing npm dependencies
-        run: npm install
-      - name: Generate Vite build files
-        run: npm run build
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.FTP_DEV_SERVER }}
-          username: ${{ secrets.FTP_DEV_USERNAME }}
-          password: ${{ secrets.FTP_DEV_PASSWORD }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /
           exclude: |
             **/.git*
