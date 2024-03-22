@@ -18,9 +18,9 @@ jobs:
         run: chmod -R 777  ./
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          local-dir: /dist
+          local-dir: dist/
           server-dir: ./
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
