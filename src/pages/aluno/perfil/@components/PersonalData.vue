@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row>
-      <v-col md="6" class="pt-4 pb-0">
+      <v-col cols="12" md="6" class="pt-4 pb-0">
         <label for="name">
           <app-text size="sm" color="subtitle" as="span" weight="regular">
             Digite seu nome completo
@@ -22,7 +22,7 @@
         </v-text-field>
       </v-col>
 
-      <v-col md="6" class="pt-4 pb-0">
+      <v-col cols="12" md="6" class="pt-4 pb-0">
         <label for="phone">
           <app-text size="sm" color="subtitle" as="span" weight="regular">
             Número de telefone
@@ -43,7 +43,7 @@
         </v-text-field>
       </v-col>
 
-      <v-col md="6" class="pt-0">
+      <v-col cols="12" md="6" class="pt-0">
         <label for="email">
           <app-text size="sm" color="subtitle" as="span" weight="regular">
             Digite seu e-mail
